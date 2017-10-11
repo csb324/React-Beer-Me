@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Single extends React.Component {
     render() {
         return (
-            <div className="Single">
+            <div className="single-beer">
                 Single
             </div>
         )

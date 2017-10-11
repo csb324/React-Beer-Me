@@ -35,10 +35,13 @@ img {
 
 h1 {
   text-align: center;
-  font-family: 'Bevan', cursive;
+  font-family: 'Megrim', cursive;
   font-weight: normal;
-  transform: rotate(-5deg) skew(-20deg);
   margin: 2rem 0 2rem 0;
+}
+.header {
+  color: #ffffff;
+  font-size: 10em;
 }
 
 h1 a {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Search extends React.Component {
     render() {
         return (
-            <div className="Search">
+            <div className="search">
                 Search
             </div>
         )

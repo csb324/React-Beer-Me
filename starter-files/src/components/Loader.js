@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 class Loader extends React.Component {
     render() {
         return (
-            <div className="Loader">
-                Loader
+            <div className="loader">
+                <img src="/images/ball.svg"/>
+                <h2>Your Message from props goes here</h2>
             </div>
         )
     }

@@ -6,3 +6,4 @@ beer/
 yarn.lock
 .vscode/*
 npm-debug.log
+.DS_Store
