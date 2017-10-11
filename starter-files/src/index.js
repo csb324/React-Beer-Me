@@ -15,6 +15,8 @@ const Root = function() {
                 <Route exact path="/" component={Main} />
                 <Route path="/search/:searchTerm" component={Main} />
                 <Route path="/beer/:beerID/:beerSlug" component={Single} />
+                <Route path="/polish/:polishID/:polishSlug" component={Single} />
+                
             </div>
         </BrowserRouter>
     )
