@@ -1,6 +1,5 @@
 import React from 'react';
 import Results from './Results';
-import Header from './Header';
 import Search from './Search';
 import slug from 'slugify';
 
@@ -93,7 +92,6 @@ class Main extends React.Component {
         // components HAVE state        
         return (
             <div className="main wrapper">
-                <Header siteName="nail party"/>
                 <Search />
                 <Results nails={this.state.nails} loading={this.state.loading} />
             </div>

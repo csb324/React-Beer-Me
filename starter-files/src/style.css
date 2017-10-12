@@ -51,6 +51,25 @@ h1 {
   transition: 0.2s;
 }
 
+.credit {
+  text-align: center;
+  margin-top: 3em;
+}
+.credit p {
+  font-size: 1.2rem;
+  font-family: monospace;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+}
+.script-link {
+  font-family: 'League Script', cursive;  
+  font-size: 1.5em;
+  text-decoration: none;
+}
+.credit a:hover {
+  color: rgb(218, 102, 160);
+}
+
 
 .results {
   display: grid;

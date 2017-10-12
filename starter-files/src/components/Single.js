@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from './Header';
 
 class Single extends React.Component {
 
@@ -63,23 +62,20 @@ class Single extends React.Component {
         };
 
         return (
-            <div className="main wrapper">
-                <Header siteName="nail party"/>
-                <div className="single-nail-polish" style={style}>
-                    <Link to="/" className="back-button" style={buttonStyle}>
-                        Back
-                    </Link>
-                    <div className="single-nail-polish__container">
-                        <h1 className="single-nail-polish__name">{color.colour_name}</h1>
-                        <p className="single-nail-polish__description">{description}</p>
-                        <img src={image_link} alt={name} className="single-nail-polish__img" />
+            <div className="single-nail-polish" style={style}>
+                <Link to="/" className="back-button" style={buttonStyle}>
+                    Back
+                </Link>
+                <div className="single-nail-polish__container">
+                    <h1 className="single-nail-polish__name">{color.colour_name}</h1>
+                    <p className="single-nail-polish__description">{description}</p>
+                    <img src={image_link} alt={name} className="single-nail-polish__img" />
 
-                        <div className="single-nail-polish__tags">
-                            { tag_list.map(this.showTag)}
-                        </div>
+                    <div className="single-nail-polish__tags">
+                        { tag_list.map(this.showTag)}
                     </div>
-
                 </div>
+
             </div>
             
         )
