@@ -1,0 +1,4 @@
+[build]
+  base    = "starter-files"
+  publish = "build/"
+  command = "npm run build"
