@@ -4,10 +4,8 @@ html {
 
 body {
   font-family: sans-serif;
-  background: #ffeeee; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #ffeeee, #ddefbb); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #ffeeee, #ddefbb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background-attachment: fixed;
+  background: #eeeeee; 
+  
   color: #333333;
 }
 
@@ -36,55 +34,48 @@ img {
 
 h1 {
   text-align: center;
-  font-family: 'League Script', cursive;
-  font-weight: normal;
   margin: 2rem 0 2rem 0;
 }
+.header-link {
+  text-decoration: none;
+}
+.header-link:hover .header {
+  transform: rotate(-3deg);
+}
 .header {
-  /* color: #ffffff; */
+  transform: rotate(0deg);
+  font-family: 'League Script', cursive;
+  font-weight: normal;
   font-size: 10em;
+  margin: 0.5em 0 1em;
+  transition: 0.2s;
 }
 
-h1 a {
-  text-decoration: none;
-  font-size: 10rem;
-  text-shadow: 3px 3px 0 rgba(13,24,28,0.2);
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
 }
 
-.beer {
-  background: #fff;
-  padding: 1rem;
-  border-top: 1.5rem solid #e13e45;
-  flex: 1 0 auto;
-  margin: 2rem;
-  overflow: hidden;
-  width: calc(33.3% - 4rem);
-  box-shadow: 0 0 10px rgba(13,24,28,0.2);
-  transition: all 0.2s;
-}
-
-.beer:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px 2px rgba(13,24,28,0.3);
-}
-
-.beer a {
+.nailpolish {
   text-decoration: none;
 }
-
-.beer h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  text-align: center;
-  margin-bottom: 2rem;
+.nailpolish:nth-child(5n+2) {
+  grid-row-end: span 3; 
+}
+.nailpolish:nth-child(6n) {
+  grid-column-end: span 2;
 }
 
-.beers {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 900px;
-  margin: 0 auto;
+.nailpolish__name {
+  color: #fff;
+  font-weight: normal;
+  padding: 1em;
+  margin: 0;  
 }
+
+
 /*
   Search
 */
@@ -111,6 +102,7 @@ h1 a {
   background: #e13e45;
   color: #fff;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .search form > *[type="text"] {
@@ -126,28 +118,56 @@ h1 a {
   font-weight: 100;
 }
 /*
-  Single Beer View
+  Single Beer / nail polish View
 */
-.single-beer {
+.single-beer, .single-nail-polish {
   max-width: 500px;
   margin: 0 auto;
   background: #fff;
   padding: 2rem;
+  text-align: center;
+  position: relative;
+}
+.single-nail-polish__img {
+  margin: 1em auto;
 }
 
-.single-beer .label {
-  width: 100%;
+.single-nail-polish__description {
+  text-align: left;
+}
+.single-nail-polish__tags {
+  text-align: left;
+}
+.back-button, .tag {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 0.5em 1em;
+  border-radius: 0.2em;
+  margin: 0 4px;
+  text-decoration: none;  
+}
+.back-button {
+  --color: #eeeeee;
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  color: #fff;
+  border: 2px solid var(--color);
+  background-color: var(--color); 
+  /* omg css variables are so cool i take it all back */
+}
+.back-button.back-button:hover {
+  background-color: #fff; 
+  color:var(--color);
 }
 
-.single-beer img {
-  max-width: 100%;
+.tag {
+  border: 1px solid #eeeeee;
+  color: #ccc;
+}
+.tag:hover {
+  background-color: #e13e45;
+  border-color: #e13e45;
+  color: #fff;
 }
 
-.single-beer h3 {
-  font-size: 2rem;
-}
-
-.glass img {
-  float: left;
-  width: 200px;
-}

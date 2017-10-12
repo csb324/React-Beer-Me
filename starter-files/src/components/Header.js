@@ -1,6 +1,7 @@
 // import the stuff you want 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // ... do stuff ...
 class Header extends React.Component {
@@ -11,9 +12,9 @@ class Header extends React.Component {
 
   render() {
     return(
-      <div>
+      <Link to="/" className="header-link">
         <h1 className="header">{this.props.siteName}</h1>
-      </div>
+      </Link>
     )
   }
 }

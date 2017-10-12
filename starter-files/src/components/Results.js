@@ -8,18 +8,24 @@ class Results extends React.Component {
   static propTypes = {
     nails: PropTypes.array
   }
+
+  shuffle() {
+		return 0.5-Math.random()
+  }
   
   render() {
     if (this.props.loading) {
       return <Loader message="one sec..." />
     }
 
+    const nails = this.props.nails.sort(this.shuffle); // tired of seeing the same nails at the top
+
     return (
       <div className="results">
-        { this.props.nails.map((nail) => {
+        { nails.map((nail) => {
           return (
             <NailPolish 
-              key={`${nail.id}_${nail.color.hex_value}`} 
+              key={ nail.uniqueID } 
               details={ nail }
             />
           )

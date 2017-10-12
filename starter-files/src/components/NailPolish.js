@@ -4,16 +4,23 @@ import { Link } from 'react-router-dom';
 import slug from 'slugify';
 
 class NailPolish extends React.Component {  
+
+  static propTypes = {
+    color: PropTypes.shape(
+      {
+        hex_value: PropTypes.string,
+        colour_name: PropTypes.string
+      }
+    )
+  }
+
   render() {
-    const { brand, name, price, image_link, product_link, color, id } = this.props.details;
-    const uniqueName = `${ brand } - ${ color.colour_name }`;
+    const { color, uniqueID } = this.props.details;
 
     return (
-      <div className='nailpolish' style={ { backgroundColor: color.hex_value } }>
-        <Link to={`/polish/${id}/${slug(uniqueName)}`}>
-          <h2 className="nailpolish__name">{ uniqueName }</h2>
-        </Link>
-      </div>
+      <Link to={`/polish/${uniqueID}/${slug(color.colour_name)}`} className="nailpolish" style={ { backgroundColor: color.hex_value } }>
+        <h2 className="nailpolish__name">{ color.colour_name }</h2>
+      </Link>
     )
   }
 }

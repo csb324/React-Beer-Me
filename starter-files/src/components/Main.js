@@ -1,6 +1,8 @@
 import React from 'react';
-import Header from './Header';
 import Results from './Results';
+import Header from './Header';
+import Search from './Search';
+import slug from 'slugify';
 
 class Main extends React.Component {
     state = {
@@ -26,11 +28,6 @@ class Main extends React.Component {
         this.setState({ numBeers: beerAmount });
     }
 
-    loadBeers = async (searchTerm = 'hops') => {
-        const beers = await fetch(`http://api.react.beer/v2/search?q=${searchTerm}&type=beer`)
-            .then(res => res.json());
-        console.log(beers);
-    }
 
     loadNails = async () => {
         this.setState({loading: true});
@@ -38,6 +35,8 @@ class Main extends React.Component {
         const localStorageNails = localStorage.getItem(`nails`);
         if (localStorageNails) {
             const localNails = JSON.parse(localStorageNails);
+            console.log(localNails);
+
             this.setState({ nails: localNails, loading: false });
             return; // stop before fetch happens!
         }
@@ -47,7 +46,7 @@ class Main extends React.Component {
             
         let filteredNails = response.map((polish) => {
             return polish.product_colors.map((color) => {
-                return {...polish, color: color};
+                return {...polish, color: color, uniqueID: slug(`${polish.id}_${color.hex_value}`) };
             });
         }).filter(colors => colors.length);
 
@@ -57,8 +56,35 @@ class Main extends React.Component {
         localStorage.setItem(`nails`, JSON.stringify(this.state.nails));
     }
 
+    filterNails = (searchTerm) => {
+        if (searchTerm === "") {
+            return;
+        }
+        console.log(searchTerm);
+        const taggedNails = this.state.nails.filter((polish) => {
+            console.log(polish);
+            return polish.tag_list
+                .map((t) => { return t.toLowerCase() })
+                .includes(searchTerm.toLowerCase());
+        });
+        console.log(taggedNails);
+        this.setState({ nails: taggedNails });
+    }
+
+    getData = async (props) => {
+        await this.loadNails();
+        const params = props.match.params || {};
+        if (params.searchTerm) {
+            this.filterNails(params.searchTerm);
+        }
+    }
+
     componentDidMount() {
-        this.loadNails();
+        this.getData(this.props);
+    }
+
+    componentWillReceiveProps(nextProps) {
+       this.getData(nextProps);
     }
 
     render() {
@@ -68,6 +94,7 @@ class Main extends React.Component {
         return (
             <div className="main wrapper">
                 <Header siteName="nail party"/>
+                <Search />
                 <Results nails={this.state.nails} loading={this.state.loading} />
             </div>
         )
